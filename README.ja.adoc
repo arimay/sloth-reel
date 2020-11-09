@@ -1,0 +1,65 @@
+= Reels
+
+Httpd と WebSocket のナマケモノフレームワーク. Celluloid, Reel, Rack, Sinatra に基づく.
+
+== 特徴
+
+* 非同期で Sinatra を扱う.
+* Sinatra と WebSocket を協調させる.
+* 実装は Reel、Sinatra、および WebSocket へのモンキーパッチ.
+* Celluloid 開発版に依存するため、安定版ではない。
+
+== 導入
+
+アプリの Gemfile にこの行を追加
+
+[source,ruby]
+----
+gem 'sloth-reel'
+----
+
+それから実行
+
+    $ bundle install
+
+または次のように手動で導入
+
+    $ gem install sloth-reel
+    or
+    $ gem install -l sloth-reel-x.x.x.gem
+
+== 使い方
+
+=== Example 1
+
+[source,ruby]
+----
+require 'sloth/reel'
+
+class WebApp < Sinatra::Base
+  get  "/"  do
+    '<html> <body> <form method="POST"> <input type="submit" value="Hello." /> </form> </body> </html>'
+  end
+
+  post  "/"  do
+    '<html> <body> Howdy. </body> </html>'
+  end
+end
+
+Reel::Rack::Server.new( WebApp.new, Host: "0.0.0.0", Port: 3000 )
+
+sleep
+----
+
+== リファレンス
+
+
+== 貢献
+
+不具合報告とプルリクエストは GitHub https://github.com/arimay/sloth-reel まで. 
+
+== ライセンス
+
+この Gem は、 http://opensource.org/licenses/MIT[MITライセンス] の条件に基づいてオープンソースとして入手できる.
+
+Copyright (c) ARIMA Yasuhiro <arima.yasuhiro@gmail.com>

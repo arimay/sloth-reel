@@ -14,7 +14,7 @@ class WebServer < Reel::Server::HTTP
   end
 
   def on_connection(connection)
-    while request = connection.request
+    while ( request = connection.request )
       if request.websocket?
         connection.detach
         route_websocket( request )
@@ -41,7 +41,8 @@ class WebServer < Reel::Server::HTTP
             websocket.write  str
             sleep  1
           end
-        rescue  Reel::SocketError
+        rescue  Reel::SocketError => e
+          error  e.message
         end
       end
     end

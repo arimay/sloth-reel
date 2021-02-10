@@ -6,7 +6,7 @@ class WebApp < Sinatra::Base
     if request.websocket?
       ws  =  request.websocket
       ws  <<  Time.now.to_s
-      ws.on_message do |mesg, sender, conns|
+      ws.on_message do |mesg, _sender, conns|
         conns.each do |conn|
           conn  <<  mesg
         end

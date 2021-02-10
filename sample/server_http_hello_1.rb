@@ -14,7 +14,7 @@ class WebServer < Reel::Server::HTTP
   end
 
   def on_connection( connection )
-    while request = connection.request
+    while ( request = connection.request )
       route_request  connection, request
     end
   end

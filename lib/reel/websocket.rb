@@ -47,7 +47,7 @@ module Reel
       @@thread  ||=  Thread.start do
         loop do
           readables,  =  ::IO.select( @@sockets, nil, nil, 1 )
-          while  sock  =  readables&.shift
+          while ( sock = readables&.shift )
             if sock.eof?
               @@conns[sock]&.close
               break
@@ -64,7 +64,7 @@ module Reel
     def parse( payload )
       @frame  <<  payload
       messages  =  []
-      while  frame = @frame.next
+      while ( frame = @frame.next )
         if (frame.type == :close)
           close
           break

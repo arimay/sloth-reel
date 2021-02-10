@@ -2,7 +2,6 @@ require 'sloth/reel'
 
 class WebApp
   def call( env )
-    r  =  nil
     case env['REQUEST_METHOD']
     when 'GET'
       case  env['PATH_INFO']

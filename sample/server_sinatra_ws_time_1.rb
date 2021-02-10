@@ -11,7 +11,8 @@ class WebApp < Sinatra::Base
             ws.write( mesg )
             sleep  1
           end
-        rescue  Reel::SocketError
+        rescue  Reel::SocketError => e
+          STDERR.puts  e.message
         end
       end
     end

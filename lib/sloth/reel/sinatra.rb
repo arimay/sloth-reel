@@ -14,5 +14,5 @@ module Sloth
   end
 end
 
-defined?( ::Sinatra ) && Sinatra::Request.send( :include, ::Sloth::Reel::Sinatra )
+defined?( ::Sinatra ) && ::Sinatra::Request.include( ::Sloth::Reel::Sinatra )
 

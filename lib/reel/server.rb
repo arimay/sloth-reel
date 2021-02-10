@@ -42,7 +42,7 @@ module Reel
       (1..@max_connection).each do
         Thread.start do
           Thread.current.report_on_exception = false    rescue  nil
-          while  sock  =  queue.pop
+          while ( sock = queue.pop )
             handle_connection  sock
           end
         end

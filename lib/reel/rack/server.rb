@@ -26,7 +26,7 @@ module Reel
           if request.websocket?
             connection.detach
             route_websocket request
-            return
+            return  nil
           else
             route_request request
           end
@@ -73,7 +73,7 @@ module Reel
             request.finish_response
           end
         else
-          Logger.error("don't know how to render: #{body.inspect}")
+          Logger.error("don't know how to render: #{request.url}")
           request.respond :internal_server_error, "An error occurred processing your request"
         end
 
@@ -97,8 +97,8 @@ module Reel
 
       # Copied from lib/puma/server.rb
       def normalize_env(env)
-        if host = env["HTTP_HOST"]
-          if colon = host.index(":")
+        if ( host = env["HTTP_HOST"] )
+          if ( colon = host.index(":") )
             env["SERVER_NAME"] = host[0, colon]
             env["SERVER_PORT"] = host[colon+1, host.bytesize]
           else

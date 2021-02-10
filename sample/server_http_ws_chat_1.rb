@@ -14,7 +14,7 @@ class WebServer < Reel::Server::HTTP
   end
 
   def on_connection(connection)
-    while request = connection.request
+    while ( request = connection.request )
       if request.websocket?
         connection.detach
         route_websocket( request )
@@ -35,7 +35,7 @@ class WebServer < Reel::Server::HTTP
     if request.websocket?
       ws  =  request.websocket
       ws  <<  Time.now.to_s
-      ws.on_message do |mesg, sender, conns|
+      ws.on_message do |mesg, _sender, conns|
         conns.each do |conn|
           conn  <<  mesg
         end

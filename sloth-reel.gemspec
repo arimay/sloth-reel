@@ -17,17 +17,17 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "celluloid", "0.18.0.pre2"
+  spec.add_runtime_dependency "celluloid", "0.18.0"
   spec.add_runtime_dependency "celluloid-io", "0.17.3"
   spec.add_runtime_dependency "celluloid-fsm", "0.20.5"
   spec.add_runtime_dependency "reel", "0.6.1"
   spec.add_runtime_dependency "reel-rack", "0.2.3"
 
   spec.add_runtime_dependency "rack"
-  spec.add_runtime_dependency "sinatra", "~> 2.0.8"
+  spec.add_runtime_dependency "sinatra"
   spec.add_runtime_dependency "sinatra-contrib"
   spec.add_runtime_dependency "websocket"
 
-  spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end

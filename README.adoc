@@ -7,7 +7,6 @@ Httpd and WebSocket sloth framework based on Celluloid, Reel, Rack and Sinatra.
 * Handle Sinatra asynchronously.
 * Coordinate Sinatra and WebSocket.
 * The implementation is a monkey patch to Reel, Sinatra and WebSocket.
-* It is not a stable version because it depends on the celluloid development version.
 
 == Installation
 

@@ -7,7 +7,6 @@ Httpd と WebSocket のナマケモノフレームワーク. Celluloid, Reel, Ra
 * 非同期で Sinatra を扱う.
 * Sinatra と WebSocket を協調させる.
 * 実装は Reel、Sinatra、および WebSocket へのモンキーパッチ.
-* Celluloid 開発版に依存するため、安定版ではない。
 
 == 導入
 
